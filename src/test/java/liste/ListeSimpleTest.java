@@ -45,7 +45,7 @@ public class ListeSimpleTest {
 
     @Test
     public void toStringDonneTousLesNoeuds() {
-        String test = "ListeSimple(Noeud(3), Noeud(2), Noeud(1))"
+        String test = "ListeSimple(Noeud(3), Noeud(2), Noeud(1))";
         listeATester.ajout(1);
         listeATester.ajout(2);
         listeATester.ajout(3);
