@@ -5,11 +5,14 @@ jobs:
     name: Salutations
     runs-on: ubuntu-latest # OS où s'exécute le job
     steps:
-      - name: Depot courant #une tâche pour se placer dans le depot courant
-      - uses: actions/checkout@v5
-      - name: Setup Java #une tâche pour mettre en place notre java
-      - uses: actions/setup-java@v5
+      - name: Depot courant # une tâche pour se placer dans le depot courant
+        uses: actions/checkout@v5
+
+      - name: Setup Java # une tâche pour mettre en place notre java
+        uses: actions/setup-java@v5
         with:
           distribution: 'corretto' # See 'Supported distributions' for available options
           java-version: '21'
-      - run: mvn -B package
+
+      - name: Maven package
+        run: mvn -B package
