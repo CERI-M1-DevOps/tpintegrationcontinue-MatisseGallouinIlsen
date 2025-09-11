@@ -11,8 +11,14 @@ jobs:
       - name: Setup Java # une tâche pour mettre en place notre java
         uses: actions/setup-java@v5
         with:
-          distribution: 'corretto' # See 'Supported distributions' for available options
+          distribution: 'corretto'
           java-version: '21'
+          cache: 'maven'
+
+      - name: Verification Maven cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
 
       - name: Maven package
         env:
