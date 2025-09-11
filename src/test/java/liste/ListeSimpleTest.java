@@ -99,7 +99,7 @@ class ListeSimpleTest {
 
     @Test
     void supprimePremierListeAvecUnSeulElement() {
-        listeATester.ajouter(2);
+        listeATester.ajout(2);
         listeATester.supprimePremier(3);
         assertEquals("ListeSimple(Noeud(2))", listeATester.toString());
         assertEquals(1, listeATester.getSize());
