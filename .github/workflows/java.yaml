@@ -1,5 +1,5 @@
 name: Java CI with Maven - Test and package
-on: [push] # Ce workflow se déclenche sur un push dans le dépôt
+on: [pull_request] # Ce workflow se déclenche sur un push dans le dépôt
 jobs:
   Salutations: # Nom du job : Salutations
     name: Salutations
@@ -15,4 +15,7 @@ jobs:
           java-version: '21'
 
       - name: Maven package
-        run: mvn -B package
+        env:
+          -SONAR_TOKEN:${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar-Dsonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
+
