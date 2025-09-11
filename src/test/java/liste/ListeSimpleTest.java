@@ -63,6 +63,17 @@ class ListeSimpleTest {
     }
 
     @Test
+    void modifiePremierNull() {
+        listeATester.ajout(null);
+        listeATester.ajout(2);
+        listeATester.ajout(3);
+        listeATester.modifiePremier(2, 4);
+        assertNull(listeATester.tete)
+        assertEquals("ListeSimple(Noeud(3), Noeud(4), Noeud(1))", listeATester.toString());
+        assertEquals(4, listeATester.tete.getSuivant().getElement());
+    }
+
+    @Test
     void modifieTous() {
         listeATester.ajout(1);
         listeATester.ajout(2);
@@ -83,6 +94,16 @@ class ListeSimpleTest {
     @Test
     void supprimePremierEnPremierePosition() {
         listeATester.ajout(1);
+        listeATester.ajout(2);
+        listeATester.ajout(3);
+        listeATester.supprimePremier(3);
+        assertEquals("ListeSimple(Noeud(2), Noeud(1))", listeATester.toString());
+        assertEquals(2, listeATester.getSize());
+    }
+
+    @Test
+    void supprimePremierNull() {
+        listeATester.ajout(null);
         listeATester.ajout(2);
         listeATester.ajout(3);
         listeATester.supprimePremier(3);
@@ -224,6 +245,20 @@ class ListeSimpleTest {
         assertEquals("ListeSimple(Noeud(1), Noeud(2), Noeud(3), Noeud(4), Noeud(5))", listeATester.toString());
         listeATester.echanger(r1, r2);
         assertEquals("ListeSimple(Noeud(1), Noeud(4), Noeud(3), Noeud(2), Noeud(5))", listeATester.toString());
+    }
+
+    @Test
+    void echanger2NoeudsSimilaires() {
+        listeATester.ajout(5);
+        listeATester.ajout(4);
+        Noeud r1 = listeATester.tete;
+        Noeud r2 = listeATester.tete;
+        listeATester.ajout(3);
+        listeATester.ajout(2);
+        listeATester.ajout(1);
+        assertEquals("ListeSimple(Noeud(1), Noeud(2), Noeud(3), Noeud(4), Noeud(5))", listeATester.toString());
+        listeATester.echanger(r1, r2);
+        assertEquals("ListeSimple(Noeud(1), Noeud(2), Noeud(3), Noeud(4), Noeud(5))", listeATester.toString());
     }
 
     @Test
