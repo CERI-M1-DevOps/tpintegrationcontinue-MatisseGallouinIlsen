@@ -8,11 +8,20 @@ public class ListeSimple {
         return size;
     }
 
+    /**
+     * Ajoute un élément en tête de liste.
+     * @param element la valeur à insérer dans la liste
+     */
     public void ajout(int element) {
         tete = new Noeud(element, tete);
         size++;
     }
 
+    /**
+     * modifie la première de la liste
+     * @param element element à modifier
+     * @param nouvelleValeur nouvelle valeur de l'élément modifié
+     */
     public void modifiePremier(Object element, Object nouvelleValeur) {
         Noeud courant = tete;
         while (courant != null && courant.getElement() != element)
