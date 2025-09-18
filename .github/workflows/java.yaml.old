@@ -15,14 +15,14 @@ jobs:
           java-version: '21'
           cache: 'maven'
 
-      - name: Verification Maven cache
+      - name: Verification Maven Cache
         uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven-
 
-      - name: Cache SonarQube packages
+      - name: Verification Sonarqube Cache
         uses: actions/cache@v4
         with:
           path: ~/.sonar/cache
