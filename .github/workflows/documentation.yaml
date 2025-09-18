@@ -1,7 +1,7 @@
 name: Génération de la documentation
 
 on:
-  pull_request:
+  pull_request_target:
     types:
       - closed  # Se déclenche uniquement quand une PR est fermée
 jobs:
