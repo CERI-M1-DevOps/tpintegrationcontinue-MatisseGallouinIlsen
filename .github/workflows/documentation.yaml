@@ -1,0 +1,30 @@
+name: Génération de la documentation
+
+on:
+  pull_request:
+    types:
+      - closed  # Se déclenche uniquement quand une PR est fermée
+jobs:
+  build-doc:
+    if: github.event.pull_request.merged == true  # Vérifie que la PR a été mergée
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Depot courant # une tâche pour se placer dans le depot courant
+        uses: actions/checkout@v5
+
+      - name: Setup Java # une tâche pour mettre en place notre java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'corretto'
+          java-version: '21'
+          cache: 'maven'
+
+      - name: Générer la documentation Javadoc
+        run: mvn -B javadoc:javadoc
+
+      - name: Déploiement sur GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/site/apidocs
